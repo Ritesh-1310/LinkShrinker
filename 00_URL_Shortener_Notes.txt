@@ -1,0 +1,17 @@
+*For this URL_Shortener, I have followed the NodeJs playlist by Piyush Garg from video lecture 21 to 26.
+
+* For generating short url there are few packages which exist like shortId and nanoId.
+* In this project shortId is being used for generating short urls. 
+* For installing shortId run: npm install shortid
+
+
+* Types of authentication:
+    (1) Statefull authentication: 
+        * For this we are using our local database MongoDB and it takes more memory
+    (2) Stateless authentication:   
+        * For this we are using a package called jwt which stands for (json web token)
+        * It is also called token based authentication
+
+* Banking websites always use session(i.e statefull authentication) becoz they have to made it for short time.
+* But social media apps, api services etc. always generate tokens becoz they have to maintain a longer session
+* So which authentication should you use in your application, can be decided according to what kind of application you are building.

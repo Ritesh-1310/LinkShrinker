@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkShrinker Signup</title>
+    <style>
+      /* Base styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh; /* Set full screen height */
+        background-color: #f0f5fa; /* Lighter blue background */
+        display: flex; /* Center content vertically */
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1 {
+        font-weight: bold;
+        color: #3399ff; /* Blue for the heading */
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      /* Signup form container */
+      .signup-form {
+        width: 400px; /* Adjusted width */
+        padding: 30px;
+        border-radius: 5px;
+        background-color: #fff; /* White background for the form */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+      }
+
+      /* Input fields */
+      input[type="text"] {
+        width: 100%;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        box-sizing: border-box; /* Include padding in width calculation */
+        margin-bottom: 15px;
+      }
+
+      /* Signup button with styling */
+      button[type="submit"] {
+        background-color: #3399ff; /* Blue background for the button */
+        color: #fff;
+        padding: 10px 30px; /* Increased padding for better visual weight */
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        display: block; /* Make it a block element for centering */
+        margin: 20px auto; /* Center the button horizontally */
+      }
+
+      button[type="submit"]:hover {
+        background-color: #228cff; /* Darker blue on hover */
+      }
+
+      /* Add a small logo for branding (optional) */
+      .signup-form img {
+        width: 100px;
+        margin-bottom: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .center-text {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-form">
+      <img
+        src="https://support.rebrandly.com/hc/article_attachments/17556825489437"
+        alt="LinkShrinker Logo"
+      />
+      <h1>LinkShrinker Signup</h1>
+      <form action="/user" method="post">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" required />
+
+        <label for="password">Password</label>
+        <input type="text" id="password" name="password" required />
+
+        <button type="submit">Signup</button>
+      </form>
+      <p class="center-text">
+        Already have an account?
+        <a href="http://localhost:8001/login">Login</a>
+      </p>
+    </div>
+  </body>
+</html>
+
+<!-- Changes made:
+
+- **Class name:** The form container class is changed to `.signup-form` for better distinction.
+- **Password input type:** While the prompt asks for a "text" password field, it's generally more secure to use the "password" type, which hides the characters as the user types (replace "text" with "password"). 
+- **Logo inclusion:** A section is included for an optional logo.
+
+Remember to replace the placeholder logo URL with the actual URL of your LinkShrinker logo. You can further customize fonts and colors based on your preferences. -->
