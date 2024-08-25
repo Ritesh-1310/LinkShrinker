@@ -28,7 +28,21 @@ async function handleGetAnalytics(req, res) {
     });
 }
 
+async function handleDeleteURL(req, res) {
+    const { shortId } = req.params;
+    const userId = req.user._id;
+
+    const url = await URL.findOneAndDelete({ shortId, createdBy: userId });
+
+    if (!url) {
+        return res.status(404).json({ error: "URL not found or you don't have permission to delete this URL" });
+    }
+
+    return res.json({ message: "URL deleted successfully" });
+}
+
 module.exports = {
     handleGenerateNewShortURL,
     handleGetAnalytics,
+    handleDeleteURL,
 };

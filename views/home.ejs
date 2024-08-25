@@ -1,186 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LinkShrinker - Shorten, Track, and Manage Your Links</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f5f5f5;
-      }
 
-      header {
-        background-color: #3399ff; /* Blue background for header */
-        color: #fff;
-        padding: 20px;
-        text-align: center;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkShrinker - Shorten, Track, and Manage Your Links</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
 
-      h1,
-      h2 {
-        margin: 0;
-        padding: 0;
-      }
+    header {
+      background-color: #3399ff;
+      /* Blue background for header */
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
 
-      main {
-        padding: 20px;
-      }
+    h1,
+    h2 {
+      margin: 0;
+      padding: 0;
+    }
 
-      .shorten-url,
-      .url-history {
-        background-color: #fff;
-        border-radius: 5px;
-        padding: 20px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-      }
+    main {
+      padding: 20px;
+    }
 
-      .shorten-url form {
-        display: flex;
-        flex-wrap: wrap; /* Allow wrapping for smaller screens */
-        justify-content: center; /* Center the content horizontally */
-        align-items: center;
-      }
+    .shorten-url,
+    .url-history {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      /* Subtle shadow for depth */
+    }
 
-      .shorten-url label {
-        flex: 0 0 100%; /* Take full width on small screens, allow shrink otherwise */
-        margin-bottom: 10px; /* Add some space below the label */
-        color: #333; /* Darker text for better contrast */
-      }
+    .shorten-url form {
+      display: flex;
+      flex-wrap: wrap;
+      /* Allow wrapping for smaller screens */
+      justify-content: center;
+      /* Center the content horizontally */
+      align-items: center;
+    }
 
-      /* Adjust input field width and add a border */
-      .shorten-url input {
-        flex: 1; /* Take remaining space */
-        margin-right: 10px; /* Add space between input and button */
-        padding: 12px; /* Increased padding */
-        border: 1px solid #ccc; /* Lightened border color for softer look */
-        border-radius: 5px;
-        box-sizing: border-box;
-        transition: border-color 0.3s ease; /* Smooth transition for border color */
-      }
+    .shorten-url label {
+      flex: 0 0 100%;
+      /* Take full width on small screens, allow shrink otherwise */
+      margin-bottom: 10px;
+      /* Add some space below the label */
+      color: #333;
+      /* Darker text for better contrast */
+    }
 
-      .shorten-url input:focus {
-        outline: none;
-        border-color: #3399ff; /* Highlight border color when input is focused */
-      }
+    /* Adjust input field width and add a border */
+    .shorten-url input {
+      flex: 1;
+      /* Take remaining space */
+      margin-right: 10px;
+      /* Add space between input and button */
+      padding: 12px;
+      /* Increased padding */
+      border: 1px solid #ccc;
+      /* Lightened border color for softer look */
+      border-radius: 5px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+      /* Smooth transition for border color */
+    }
 
-      .shorten-url button {
-        flex: 0 0 auto; /* Allow button to shrink */
-        background-color: #3399ff;
-        color: #fff;
-        padding: 12px 24px; /* Increased padding */
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease; /* Smooth transition for background color */
-      }
+    .shorten-url input:focus {
+      outline: none;
+      border-color: #3399ff;
+      /* Highlight border color when input is focused */
+    }
 
-      .shorten-url button:hover {
-        background-color: #228cff;
-      }
+    .shorten-url button {
+      flex: 0 0 auto;
+      /* Allow button to shrink */
+      background-color: #3399ff;
+      color: #fff;
+      padding: 12px 24px;
+      /* Increased padding */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      /* Smooth transition for background color */
+    }
 
-      .success-message {
-        color: green;
-        margin-top: 10px;
-      }
+    .shorten-url button:hover {
+      background-color: #228cff;
+    }
 
-      .url-history table {
-        width: 100%;
-        border-collapse: collapse; /* Allow the table to collapse */
-        table-layout: fixed; /* Fixed table layout */
-      }
+    .success-message {
+      color: green;
+      margin-top: 10px;
+    }
 
-      .url-history th,
-      .url-history td {
-        padding: 10px;
-        border: 1px solid #ddd;
-        text-align: left;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        word-wrap: break-word; /* Ensure long words break to fit */
-      }
+    .url-history table {
+      width: 100%;
+      border-collapse: collapse;
+      /* Allow the table to collapse */
+      table-layout: fixed;
+      /* Fixed table layout */
+    }
 
-      .url-history th:first-child,
-      .url-history td:first-child {
-        width: 5%; /* Fixed width for S. No */
-      }
+    .url-history th,
+    .url-history td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      /* Ensure long words break to fit */
+    }
 
-      .url-history th:nth-child(2),
-      .url-history td:nth-child(2) {
-        width: 55%; /* Fixed width for Original URL */
-      }
+    .url-history th:first-child,
+    .url-history td:first-child {
+      width: 5%;
+      /* Fixed width for S. No */
+    }
 
-      .url-history th:nth-child(3),
-      .url-history td:nth-child(3) {
-        width: 20%; /* Fixed width for Shortened URL */
-      }
+    .url-history th:nth-child(2),
+    .url-history td:nth-child(2) {
+      width: 55%;
+      /* Fixed width for Original URL */
+    }
 
-      .url-history th:nth-child(4),
-      .url-history td:nth-child(4) {
-        width: 10%; /* Fixed width for ShortID */
-      }
+    .url-history th:nth-child(3),
+    .url-history td:nth-child(3) {
+      width: 20%;
+      /* Fixed width for Shortened URL */
+    }
 
-      .url-history th:nth-child(5),
-      .url-history td:nth-child(5) {
-        width: 5%; /* Fixed width for Clicks */
-      }
+    .url-history th:nth-child(4),
+    .url-history td:nth-child(4) {
+      width: 10%;
+      /* Fixed width for ShortID */
+    }
 
-      .url-history th:nth-child(6),
-      .url-history td:nth-child(6) {
-        width: 5%; /* Fixed width for Delete */
-      }
+    .url-history th:nth-child(5),
+    .url-history td:nth-child(5) {
+      width: 5%;
+      /* Fixed width for Clicks */
+    }
 
-      .delete-icon {
-        color: red;
-        cursor: pointer;
-      }
+    .url-history th:nth-child(6),
+    .url-history td:nth-child(6) {
+      width: 5%;
+      /* Fixed width for Delete */
+    }
 
-      .delete-icon:hover {
-        color: darkred;
-      }
+    .delete-icon {
+      color: red;
+      cursor: pointer;
+    }
 
-      /* Add a light green background for the URL history section */
-      .url-history {
-        background-color: #dfefff;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>LinkShrinker</h1>
-      <p>Shorten, Track, and Manage Your Links with Ease</p>
-    </header>
-    <main>
-      <section class="shorten-url">
-        <h2>Shorten Your Links</h2>
-        <form method="POST" action="/url">
-          <label for="url">Enter Your Original URL</label>
-          <input
-            type="text"
-            id="url"
-            name="url"
-            placeholder="https://link-shrinker.vercel.app/login"
-            required
-          />
-          <button type="submit">Shorten</button>
-        </form>
-        <% if (locals.id) { %>
+    .delete-icon:hover {
+      color: darkred;
+    }
+
+    /* Add a light green background for the URL history section */
+    .url-history {
+      background-color: #dfefff;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>LinkShrinker</h1>
+    <p>Shorten, Track, and Manage Your Links with Ease</p>
+  </header>
+  <main>
+    <section class="shorten-url">
+      <h2>Shorten Your Links</h2>
+      <form method="POST" action="/url">
+        <label for="url">Enter Your Original URL</label>
+        <input type="text" id="url" name="url" placeholder="https://link-shrinker.vercel.app/login" required />
+        <button type="submit">Shorten</button>
+      </form>
+      <% if (locals.id) { %>
         <p class="success-message">
           Your shortened URL is:
-          <a href="https://link-shrinker.vercel.app/url/<%= id %>" target="_blank"
-            >https://link-shrinker.vercel.app/url/<%= id %></a
-          >
+          <a href="https://link-shrinker.vercel.app/url/<%= id %>" target="_blank">https://link-shrinker.vercel.app/url/
+            <%= id %></a>
         </p>
         <% } %>
-      </section>
-      <% if (locals.urls) { %>
+    </section>
+    <% if (locals.urls) { %>
       <section class="url-history">
         <h2>Your Link History</h2>
         <table>
@@ -195,30 +212,40 @@
             </tr>
           </thead>
           <tbody>
-            <% urls.forEach((url, index) => { %>
-            <tr>
-              <td><%= index + 1 %></td>
-              <td>
-                <a href="<%= url.redirectURL %>" target="_blank"
-                  ><%= url.redirectURL %></a
-                >
-              </td>
-              <td>
-                <a
-                  href="https://link-shrinker.vercel.app/url/<%= url.shortId %>"
-                  target="_blank"
-                  >https://link-shrinker.vercel.app/url/<%= url.shortId %></a
-                >
-              </td>
-              <td><%= url.shortId %></td>
-              <td><%= url.visitHistory.length %></td>
-              <td><i class="fas fa-trash delete-icon"></i></td>
-            </tr>
-            <% }) %>
+            <% urls.forEach((url, index)=> { %>
+              <tr>
+                <td>
+                  <%= index + 1 %>
+                </td>
+                <td>
+                  <a href="<%= url.redirectURL %>" target="_blank">
+                    <%= url.redirectURL %>
+                  </a>
+                </td>
+                <td>
+                  <a href="https://link-shrinker.vercel.app/url/<%= url.shortId %>"
+                    target="_blank">https://link-shrinker.vercel.app/url/<%= url.shortId %></a>
+                </td>
+                <td>
+                  <%= url.shortId %>
+                </td>
+                <td>
+                  <%= url.visitHistory.length %>
+                </td>
+                <td>
+                  <form action="/url/delete/<%= url.shortId %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="submit" style="background:none;border:none;color:red;cursor:pointer;">
+                      <i class="fas fa-trash delete-icon"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
           </tbody>
         </table>
       </section>
       <% } %>
-    </main>
-  </body>
+  </main>
+</body>
+
 </html>

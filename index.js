@@ -6,9 +6,7 @@ const cookieParser = require('cookie-parser');
 const { connectToMongoDB } = require("./connect");
 const { restrictToLoggedinUserOnly, checkAuth } = require('./middlewares/auth');
 const URL = require("./models/url");
-
 const urlRoute = require("./routes/url");
-
 const staticRoute = require("./routes/staticRouter");
 const userRoute = require('./routes/user');
 
@@ -19,8 +17,6 @@ const mongoDbPath = process.env.mongoDbPath;
 connectToMongoDB(mongoDbPath).then(() => console.log("Mongodb connected")).catch((e)=>{
     console.log(e)
 });
-
-// connectToMongoDB("mongodb://localhost:27017/short-url").then(() => console.log("Mongodb connected"));
 
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));

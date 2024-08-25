@@ -8,9 +8,10 @@ function setUser(user) {
         _id: user._id,
         email: user.email,
     },
-    jwtSecretKey
+        jwtSecretKey
     );
 }
+
 
 function getUser(token) {
     if (!token) return null;
@@ -21,13 +22,16 @@ function getUser(token) {
     }
 }
 
+
 module.exports = {
     setUser,
     getUser,
 };
 
 
+
 /*
+
 # Types of authentication
     1. Statefull authentication (use severver memory)
     --> Also called session-based authentication and it is more secure but everytime have to login cannot stay logedin for long time, this auth is used by railway, bank, etc.
@@ -39,6 +43,11 @@ module.exports = {
     To understand this concept watch video-23 and 24 of Piyush garg's "Master NodeJs" playlist.
 
 # Cookies:    
-    --> Cookies are small pieces of text sent to your browser by a website you visit. They help that website remember information about your visit, which can both make it easier to visit the site again and make the site more useful to you.
+    --> Cookies are small pieces of text sent to your browser by a website you visit. 
+        They help that website remember information about your visit, which can both make 
+        it easier to visit the site again and make the site more useful to you.
     
+
+
 */
+
