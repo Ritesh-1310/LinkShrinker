@@ -38,7 +38,7 @@ async function handleDeleteURL(req, res) {
         return res.status(404).json({ error: "URL not found or you don't have permission to delete this URL" });
     }
 
-    return res.json({ message: "URL deleted successfully" });
+    return res.redirect("/");
 }
 
 module.exports = {
