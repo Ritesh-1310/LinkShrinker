@@ -9,7 +9,8 @@ async function handleGenerateNewShortURL(req, res) {
     if (body.url.length <= 46) {
         return res.render("home", { 
             id: null, 
-            smallLinkMessage: "Link is already quite small" 
+            smallLinkMessage: "Link is already quite small",
+            urls: urls,
         });
     }
 
