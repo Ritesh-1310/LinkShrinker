@@ -3,19 +3,25 @@ const URL = require('../models/url');
 
 async function handleGenerateNewShortURL(req, res) {
     const body = req.body;
-    if(!body.url) return res.status(400).json({ error: 'url is required' });
+    if (!body.url) return res.status(400).json({ error: 'URL is required' });
+
     const shortID = shortid();
 
+    // Create a new shortened URL entry
     await URL.create({
         shortId: shortID,
         redirectURL: body.url,
-        visitedHistory: [],
+        visitHistory: [],
         createdBy: req.user._id,
     });
 
+    // Fetch the user's URL history
+    const urls = await URL.find({ createdBy: req.user._id });
 
+    // Render the home page with both the shortened URL and the URL history
     return res.render("home", { 
         id: shortID,
+        urls,  // Pass the URL history to the template
     });
 }
 
