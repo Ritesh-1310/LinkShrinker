@@ -5,23 +5,28 @@ async function handleGenerateNewShortURL(req, res) {
     const body = req.body;
     if (!body.url) return res.status(400).json({ error: 'URL is required' });
 
+    // Check if the URL is 46 characters or fewer
+    if (body.url.length <= 46) {
+        return res.render("home", { 
+            id: null, 
+            smallLinkMessage: "Link is already quite small" 
+        });
+    }
+
     const shortID = shortid();
 
-    // Create a new shortened URL entry
     await URL.create({
         shortId: shortID,
         redirectURL: body.url,
-        visitHistory: [],
+        visitedHistory: [],
         createdBy: req.user._id,
     });
 
-    // Fetch the user's URL history
-    const urls = await URL.find({ createdBy: req.user._id });
+    const urls = await URL.find({ createdBy: req.user._id }); // Fetch all URLs for this user
 
-    // Render the home page with both the shortened URL and the URL history
     return res.render("home", { 
         id: shortID,
-        urls,  // Pass the URL history to the template
+        urls: urls, // Pass the URLs to the frontend to display the history
     });
 }
 
