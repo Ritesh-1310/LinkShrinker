@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -156,7 +156,6 @@
 
 <body>
   <header style="background-color: #3399ff; color: white; padding: 40px 20px; position: relative;">
-    <!-- Logout Button at Top-Right -->
     <form action="/logout" method="POST" onsubmit="return confirm('Are you sure you want to logout?');"
       style="position: absolute; top: 50px; right: 50px;">
       <button type="submit" style="
@@ -172,7 +171,6 @@
       </button>
     </form>
 
-    <!-- Centered Title and Subtitle -->
     <div style="text-align: center;">
       <h1 style="margin: 0;">LinkShrinker</h1>
       <p style="margin: 0;">Shorten, Track, and Manage Your Links with Ease</p>
@@ -187,15 +185,11 @@
         <input type="text" id="url" name="url" placeholder="https://link-shrinker.vercel.app/login" required />
         <button type="submit">Shorten</button>
       </form>
-
-      <!-- Check if the link is already quite small and display a message -->
       <% if (locals.smallLinkMessage) { %>
         <p class="error-message">
           <%= smallLinkMessage %>
         </p>
         <% } %>
-
-          <!-- Check if a shortened URL was generated and display it -->
           <% if (locals.id) { %>
             <p class="success-message">
               Your shortened URL is:
@@ -260,4 +254,4 @@
   </main>
 </body>
 
-</html>
+</html> -->
