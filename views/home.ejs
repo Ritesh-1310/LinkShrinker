@@ -155,26 +155,27 @@
 </head>
 
 <body>
-  <header>
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-      <div>
-        <h1>LinkShrinker</h1>
-        <p>Shorten, Track, and Manage Your Links with Ease</p>
-      </div>
-      <form action="/logout" method="POST" onsubmit="return confirm('Are you sure you want to logout?');">
-        <button type="submit" style="
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-  ">
-          Logout
-        </button>
-      </form>
+  <header style="background-color: #3399ff; color: white; padding: 40px 20px; position: relative;">
+    <!-- Logout Button at Top-Right -->
+    <form action="/logout" method="POST" onsubmit="return confirm('Are you sure you want to logout?');"
+      style="position: absolute; top: 50px; right: 50px;">
+      <button type="submit" style="
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    ">
+        Logout
+      </button>
+    </form>
 
+    <!-- Centered Title and Subtitle -->
+    <div style="text-align: center;">
+      <h1 style="margin: 0;">LinkShrinker</h1>
+      <p style="margin: 0;">Shorten, Track, and Manage Your Links with Ease</p>
     </div>
   </header>
 
