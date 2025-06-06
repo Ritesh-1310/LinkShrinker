@@ -4,11 +4,13 @@ const jwtSecretKey = process.env.jwtSecretKey;
 
 
 function setUser(user) {
-    return jwt.sign({
-        _id: user._id,
-        email: user.email,
-    },
-        jwtSecretKey
+    return jwt.sign(
+        {
+            _id: user._id,
+            email: user.email,
+        },
+        jwtSecretKey,
+        { expiresIn: "7d" } // Token expires in 7 days
     );
 }
 
@@ -18,7 +20,7 @@ function getUser(token) {
     try {
         return jwt.verify(token, jwtSecretKey);
     } catch (error) {
-        return null;
+        return null; // Invalid or expired token
     }
 }
 

@@ -1,5 +1,3 @@
-// routes/public.js
-
 const express = require("express");
 const { handlePublicURLShorten } = require("../controllers/public");
 

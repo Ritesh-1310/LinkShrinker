@@ -1,5 +1,3 @@
-// controllers/public.js
-
 const shortid = require("shortid");
 const URL = require("../models/url");
 
@@ -26,7 +24,7 @@ async function handlePublicURLShorten(req, res) {
 
     return res.status(200).json({
       message: "Shortened successfully",
-      shortUrl: `${req.protocol}://${req.get("host")}/url/${shortId}`,
+      shortUrl: `${req.protocol}://${req.get("host")}/api/url/${shortId}`,
     });
   } catch (err) {
     console.error("Error shortening public URL:", err);
