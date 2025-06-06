@@ -5,7 +5,7 @@ const methodOverride = require("method-override");
 const cors = require("cors");
 
 const { connectToMongoDB } = require("./connect");
-const { restrictToLoggedinUserOnly, checkAuth } = require("./middlewares/auth");
+const {checkAuth } = require("./middlewares/auth");
 const URL = require("./models/url");
 const urlRoute = require("./routes/url");
 const userRoute = require("./routes/auth");
@@ -21,8 +21,22 @@ connectToMongoDB(mongoDbPath)
   .catch((e) => console.error("❌ MongoDB connection failed:", e));
 
 // CORS setup
+// Allow both production and local dev frontend
+const allowedOrigins = [
+  "https://link-shrinker-frontend-three.vercel.app",
+  "http://localhost:5173",
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, Postman)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 }));
 
