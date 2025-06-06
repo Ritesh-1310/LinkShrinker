@@ -18,9 +18,14 @@ router.post("/signup", handleUserSignup);
 router.post("/login", handleUserLogin);
 
 router.post("/logout", (req, res) => {
-    res.clearCookie("uid");
-    return res.status(200).json({ message: "Logged out successfully" });
+  res.clearCookie("uid", {
+    httpOnly: true,
+    secure: true,          // same as set
+    sameSite: "None",      // same as set
+  });
+  return res.status(200).json({ message: "Logged out successfully" });
 });
+
 
 module.exports = router;
 
