@@ -19,7 +19,7 @@ async function handlePublicURLShorten(req, res) {
       shortId,
       redirectURL: url,
       visitedHistory: [],
-      createdBy: null, // 🔸 anonymous
+      createdBy: null, // anonymous
     });
 
     return res.status(200).json({

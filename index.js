@@ -17,8 +17,8 @@ const mongoDbPath = process.env.mongoDbPath;
 
 // MongoDB connection
 connectToMongoDB(mongoDbPath)
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch((e) => console.error("❌ MongoDB connection failed:", e));
+  .then(() => console.log("MongoDB connected"))
+  .catch((e) => console.error("MongoDB connection failed:", e));
 
 // CORS setup
 // Allow both production and local dev frontend
@@ -49,7 +49,7 @@ app.use(methodOverride("_method"));
 // Root route
 app.get("/", (req, res) => {
   return res.status(200).json({
-    message: "🎉 Welcome to LinkShrinker Backend API!",
+    message: "Welcome to LinkShrinker Backend API!",
     endpoints: {
       api_base: "/api",
       public_shorten: "/api/url/public",
@@ -62,8 +62,8 @@ app.get("/", (req, res) => {
 // API base route
 app.get("/api", (req, res) => {
   return res.status(200).json({
-    message: "🛠️ LinkShrinker API is working!",
-    docs: "📄 API documentation will be available soon.",
+    message: "LinkShrinker API is working!",
+    docs: "API documentation will be available soon.",
   });
 });
 
@@ -83,11 +83,11 @@ app.get("/api/url/:shortId", async (req, res) => {
   );
 
   if (!entry) {
-    return res.status(404).json({ error: "Short URL not found 🚫" });
+    return res.status(404).json({ error: "Short URL not found" });
   }
 
   return res.redirect(entry.redirectURL);
 });
 
 // Start server
-app.listen(PORT, () => console.log(`🚀 Server started at http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server started at http://localhost:${PORT}`));

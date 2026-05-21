@@ -1,3 +1,42 @@
-node_modules
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
 .DS_Store
-.00_URL_Shortener_Notes.txt
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Build folders
+dist/
+build/
+coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# Notes / personal files
+00_URL_Shortener_Notes.txt
+
+# Vercel
+.vercel/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
